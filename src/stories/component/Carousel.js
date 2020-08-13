@@ -13,7 +13,7 @@ import 'swiper/swiper-bundle.css';
 SwiperCore.use([Navigation, Pagination, A11y, Autoplay]);
 const SlideStyle = {
 	height: 'auto',
-	width: 300,
+
 	textAlign: 'center',
 };
 const imageStyle = {
@@ -22,9 +22,9 @@ const imageStyle = {
 
 const Swipe = (props) => (
 	<Swiper
-		height={100}
+		loop
 		navigation
-		spaceBetween={50}
+		autoplay={{ AutoplayOptions: true }}
 		slidesPerView={1}
 		pagination={{ clickable: true }}
 		scrollbar={{ draggable: true }}
@@ -42,6 +42,12 @@ const Swipe = (props) => (
 		</SwiperSlide>
 		<SwiperSlide style={SlideStyle}>
 			<img style={imageStyle} src="promotion2.png"></img>
+		</SwiperSlide>
+		<SwiperSlide style={SlideStyle}>
+			<img style={imageStyle} src="promotion3.png"></img>
+		</SwiperSlide>
+		<SwiperSlide style={SlideStyle}>
+			<img style={imageStyle} src="promotion4.png"></img>
 		</SwiperSlide>
 	</Swiper>
 );
