@@ -45,5 +45,17 @@
     "@storybook/react": "^6.0.3",
     "babel-loader": "^8.1.0",
     "react-is": "^16.13.1"
-  }
+  },
+  "description": "`\r     외않댐?\r `",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DN-2020/fe-common-components.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DN-2020/fe-common-components/issues"
+  },
+  "homepage": "https://github.com/DN-2020/fe-common-components#readme"
 }
