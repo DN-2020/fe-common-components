@@ -5,12 +5,13 @@ const PieChart = (pieChart) => {
 
 return(
 <>
+<div style ={{width : "70%"}}>
 <Doughnut
           data={pieChart.pieChart}
           options={{
             title:{
               display:true,
-              text:'Average Rainfall per month',
+              text:'제품별 주문건수',
               fontSize:20
             },
             legend:{
@@ -19,6 +20,7 @@ return(
             }
           }}
         />
+        </div>
 </>
 )}
 

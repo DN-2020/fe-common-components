@@ -19,10 +19,10 @@ const InputBox = () => {
 
  return(
   <>
-  <Input.Group style ={{width : "18%"}}>
-    <Input.Search enterButton style={{verticalAlign:'middle'}} 
+  <Input.Group style ={{width : "25%"}}>
+    <Input.Search enterButton 
      placeholder="name" allowClear onChange={onChange} onSearch = {action('submit')}
-     size = "middle" width = "50%" 
+     size = "middle" 
      value = {info}/>
     </Input.Group>
       </>

@@ -7,7 +7,8 @@ const barChart = (barChart) => {
 
     return(
     <>
-             <Bar
+    <div style ={{width : "70%"}}>
+             <Bar 
               data={barChart.barChart} 
               options={{
                 scales: {
@@ -23,7 +24,7 @@ const barChart = (barChart) => {
     
                 title:{
                   display:true,
-                  text:'Average Rainfall per month',
+                  text:'제품별 주문건수',
                   fontSize:20
                 },
                 legend:{
@@ -32,6 +33,7 @@ const barChart = (barChart) => {
                 }
               }}
             />
+            </div>
           </>
     )
     }

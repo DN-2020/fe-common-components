@@ -10,34 +10,33 @@ const Page = () => {
 const [Item , setItem] = useState([
   {id:0},{id :1},{id:2},{id:3},{id:4},{id:5},{id:6},
   {id:7},{id:8},{id:9},{id:10},{id:11},{id:12},{id:13}
-  ,{id:14},{id:15},{id:16}
+  ,{id:14},{id:15},{id:16},{id:17},{id:18},{id:19}
 ]);
 
-const [pageSize] = useState(5);
-const [currentPage , setcurrentPage] = useState(1);
+const [pageSize] = useState(5); //한페이지 아이템 개수 
+const [currentPage , setcurrentPage] = useState(1); //currentPage 현재 페이지
 
-const count = Item.length
-
-if (count === 0)
-return <p>no data</p>
-
+let count = Item.length
 const Items = paginate(Item, currentPage, pageSize);
-
 const handlePageChange = (page) => {
   setcurrentPage(page)
 }
 
 
+
+if (count === 0)
+return <p>no data</p>
+
 return(
 
 <>
-<p>showing {count} item in the database.</p>
+<p>total number: {count-1} </p>
 
 
 <table className="table">
           <thead>
             <tr>
-              <th>ID</th>
+              <th>number</th>
             </tr>
           </thead>
           <tbody>
@@ -52,18 +51,15 @@ return(
 <Pagination 
 defaultCurrent={1}
   pageSize={pageSize} // 한페이지에 보여지는 데이터 수
-  // showLessItems={count} //총 데이터 개수
-  // current={currentPage}
   onChange={handlePageChange} //클릭된 페이지
   total = {count} //가져올 데이터 개수
+  // showLessItems={count} 
+  // current={currentPage}
   />
 </>
 )}
 export default Page;
 
-//pageNumber:
-//items:
-//pageSize:
 
 
 export function paginate(items, pageNumber, pageSize) {
