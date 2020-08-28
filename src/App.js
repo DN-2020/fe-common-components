@@ -1,11 +1,21 @@
 import React from 'react';
+import logo from './logo.svg';
 import './App.css';
-import BarChart from './chart/BarChart';
+
+import Calendar from './components/Calendar/Calendar'
+import RangePickers from './components/Calendar/RangePickers'
+import TimePickers from './components/Calendar/TimePickers'
+
+
+
 
 function App() {
   return (
     <div>
-      <BarChart />
+      <Calendar/>
+
+      <RangePickers/>
+      <TimePickers/>
     </div>
   );
 }

@@ -4,8 +4,11 @@ import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
 import { INITIAL_EVENTS, createEventId } from './event-utils'
+import RegisterModal from './RegisterModal'
 
-const C2 = () => {
+
+
+const Calendar = (props) => {
     const [weekendsVisible, setWeekendsVisible] = useState({
         weekendsVisible: true
     })
@@ -14,10 +17,117 @@ const C2 = () => {
         currentEvents:[]
     })
 
+    const [modal,setModal] = useState(false);
+
+    const [selectInfo,setSelectInfo] = useState({
+      selectInfo:[]
+      
+    });
+
+    const [startDate,setStartDate] = useState({
+      startDate:[]
+    })
+    const [endDate,setEndDate] = useState({
+      endDate:[]
+    })
+
+    const [title,setTitle] =useState({
+      title:[]
+    })
+
+      //모달로 일정 등록
+      const handleDateSelect = () => {
+        let calendarApi = selectInfo.view.calendar
+        console.log("등록")
+    
+        calendarApi.unselect() // clear date selection
+    
+        if (title) {
+          calendarApi.addEvent({
+            id: createEventId(),
+            title:title["title"],
+            start: startDate["startDate"],
+            end: endDate["endDate"],
+            allDay: selectInfo.allDay
+          })
+        }
+
+
+      }
+      //모달 열기
+      const openModal = (selctInfo) => {
+ 
+        setModal(!modal);
+        setSelectInfo(selctInfo)
+        //setStartDate(s.startStr.replace(/\"/gi,/\'/gi ))
+        //setStartDate(s.startStr)
+      }
+
+      const titleHandler = (events) => {
+        setTitle({
+          title: events.target.value
+        })
+        console.log(title)
      
-      const handleDateSelect = (selectInfo) => {
+    }
+    const formatDate=(date)=>{
+        const month=formatMonth(date.substring(4,7));
+        const day=date.substring(8,10);
+        const year=date.substring(11,15);
+        const format=year+"-"+month+"-"+day;
+        console.log(format);
+        return format
+    }
+    const formatMonth=(month)=>{
+      switch(month){
+        case "Jan":
+          return '01';
+        case "Feb":
+          return '02';
+        case "Mar":
+          return '03';
+        case "Apr":
+          return '04';
+        case "May":
+          return '05';
+        case "Jun":
+          return '06';
+        case "Jul":
+          return '07';
+        case "Aug":
+          return '08';
+        case "Sep":
+          return '09';
+        case "Oct":
+          return '10';
+        case "Nov":
+          return '11';
+        case "Dec":
+          return '12';
+      }
+    }
+    const dateHandler = (events) => {
+      
+       let a = formatDate(new String(events[0]['_d']));
+       let b = formatDate(new String(events[1]['_d']));
+      setStartDate({
+        startDate: a
+        
+      })
+
+      setEndDate({
+        
+        endDate: b
+      })
+  }
+ 
+
+
+     //하나씩 일정 추가
+      const handleDateSelects = (selectInfo) => {
         let title = prompt('Please enter a new title for your event')
         let calendarApi = selectInfo.view.calendar
+        console.log(selectInfo)
     
         calendarApi.unselect() // clear date selection
     
@@ -47,6 +157,7 @@ const C2 = () => {
      
 
     return (
+      <div>
         <div className='demo-app'>
    
         <button onClick={()=>setWeekendsVisible(!weekendsVisible)}>toggle weekends</button>
@@ -65,7 +176,7 @@ const C2 = () => {
             dayMaxEvents={true}
             weekends={weekendsVisible}
             initialEvents={INITIAL_EVENTS} // alternatively, use the `events` setting to fetch from a feed
-            select={handleDateSelect}
+            select={openModal}
             eventContent={renderEventContent} // custom render function
             eventClick={handleEventClick}
             eventsSet={handleEvents} // called after events are initialized/added/changed/removed
@@ -75,7 +186,14 @@ const C2 = () => {
             eventRemove={function(){}}
             */
           />
+
+ 
         </div>
+     </div>
+
+
+      <RegisterModal title="일정등록" isOpen={modal} width={1150} titleHandler={titleHandler} handleDateSelect={handleDateSelect} openModal={openModal} dateHandler={dateHandler} endDate={endDate} onChange={v=>setModal(v)} />
+  
       </div>
       );
 }
@@ -97,4 +215,4 @@ function renderSidebarEvent(event) {
   )
 }
 
-export default C2;
+export default Calendar;
