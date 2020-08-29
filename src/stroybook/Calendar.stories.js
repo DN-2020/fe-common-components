@@ -1,7 +1,7 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react';
 import {action} from '@storybook/addon-actions';
-import C2 from '../components/Calendar/C2'
+import Calendar from '../components/Calendar/Calendar'
 
 export const task = {
     idx: 1,
@@ -18,10 +18,10 @@ export const task = {
   };
   
   // 스토리 추가
-  storiesOf('C2', module) // Storybook에 표시될 폴더명
+  storiesOf('Calendar', module) // Storybook에 표시될 폴더명
     .addDecorator(story => <div style={{ padding: '0 20rem' }}>{story()}</div>)
 
-    .add('viewCalendar', () => <C2 task={task} viewCalendar={actions.viewCalendar} />)
+    .add('viewCalendar', () => <Calendar task={task} viewCalendar={actions.viewCalendar} />)
 
 
   
