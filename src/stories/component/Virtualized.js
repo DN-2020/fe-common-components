@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { List, Avatar, Button, Skeleton, message, Spin } from 'antd';
+import { List, Avatar, Button, Skeleton, message, Spin, Card, Rate } from 'antd';
 import InfiniteScroll from 'react-infinite-scroller'
 import reqwest from 'reqwest';
+import { ItemSlide } from './ItemSlider';
 
 const count = 3;
 const fakeDataUrl = `https://randomuser.me/api/?results=${count}&inc=name,gender,email,nat&noinfo`;
@@ -85,7 +86,7 @@ const Virtual = (props) => {
     />
   )
 }
-
+const { Meta } = Card;
 const fakeScrollDataUrl = 'https://randomuser.me/api/?results=5&inc=name,gender,email,nat&noinfo';
 const VirtualScroll = (props) => {
   const [data, setData] = useState([]);
@@ -129,7 +130,7 @@ const VirtualScroll = (props) => {
       borderRadius: "4px",
       overflow: "auto",
       padding: "8px 24px",
-      height: "300px"
+      height: "1000px"
     }}
       className="demo-infinite-container">
       <InfiniteScroll
@@ -144,13 +145,10 @@ const VirtualScroll = (props) => {
           renderItem={item => (
             <List.Item key={item.id}>
               <List.Item.Meta
-                avatar={
-                  <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
-                }
-                title={<a href="https://ant.design">{item.name.last}</a>}
-                description={item.email}
+
+                // title={<a href="https://ant.design">{item.name.last}</a>}
+                description={<ItemSlide></ItemSlide>}
               />
-              <div>Content</div>
             </List.Item>
           )}
         >
