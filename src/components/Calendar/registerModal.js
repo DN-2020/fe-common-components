@@ -34,7 +34,7 @@ const RegisterModal = props => {
     else toggleOnChange();
   };
 
-  const abc =()=>{
+  const abc = () => {
     console.log(props.start)
   }
   return (
@@ -50,27 +50,27 @@ const RegisterModal = props => {
       >
         <div>
           <Descriptions title="일정 등록하기" bordered>
-            <Descriptions.Item label="날짜선택" span={3}> 
-            <RangePicker
-     
-      format={dateFormat} onChange={(e)=>props.dateHandler(e)}
-    />
+            <Descriptions.Item label="날짜선택" span={3}>
+              <RangePicker
+
+                format={dateFormat} onChange={(e) => props.dateHandler(e)}
+              />
             </Descriptions.Item>
-           
-            <Descriptions.Item label="일정명" span={3}> <Input onChange={(e)=>props.titleHandler(e)}></Input>
+
+            <Descriptions.Item label="일정명" span={3}> <Input onChange={(e) => props.titleHandler(e)}></Input>
 
             </Descriptions.Item>
-           
-            
+
+
           </Descriptions>
           <Space direction="vertical" size={12}>
-   
-    
-  </Space>
- 
-          
+
+
+          </Space>
+
+
         </div>
-     
+
       </Modal>
     </div>
   );
